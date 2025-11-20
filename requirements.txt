@@ -5,5 +5,7 @@ langchain-text-splitters==0.3.6
 streamlit
 selenium
 webdriver_manager
+chromadb
+
 
 
