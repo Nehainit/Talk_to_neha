@@ -91,18 +91,27 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Chat form
-with st.form(key="chat_form", clear_on_submit=True):
-    user_input = st.text_input(
-        label="I’m ready — whenever you are",
-        key="user_question"
-    )
-    submit = st.form_submit_button("Send")
+# # Chat form
+# with st.form(key="chat_form", clear_on_submit=True):
+#     user_input = st.text_input(
+#         label="I’m ready — whenever you are",
+#         key="user_question"
+#     )
+#     submit = st.form_submit_button()
 
     # if submit and user_input:
     #     # Example assistant reply
     #     assistant_reply = "This is a sample reply from Assistant."
     #     st.session_state.history.append((user_input, assistant_reply))
+
+user_input = st.text_input(
+    "I’m ready — whenever you are",
+    key="user_question",
+    placeholder="Type your message…",
+)
+
+submit = bool(user_input)   # Enter press = auto-submit
+
 
 db=create_or_update_vectorstore()
 
