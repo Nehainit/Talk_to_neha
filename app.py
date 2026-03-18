@@ -3,6 +3,10 @@ from dotenv import load_dotenv
 from agent import build_agent
 from ingest import create_or_update_vectorstore
 import os
+import io
+import speech_recognition as sr
+from gtts import gTTS
+from streamlit_mic_recorder import mic_recorder
 
 
 load_dotenv()
@@ -104,26 +108,54 @@ st.markdown(
     #     assistant_reply = "This is a sample reply from Assistant."
     #     st.session_state.history.append((user_input, assistant_reply))
 
+voice_mode = st.sidebar.toggle("Enable Voice Mode", value=False)
+
+db = create_or_update_vectorstore()
+
+voice_text = None
+if voice_mode:
+    st.markdown("**🎙️ Click the mic to record your question:**")
+    audio_data = mic_recorder(
+        start_prompt="🎤 Start Recording",
+        stop_prompt="⏹️ Stop Recording",
+        just_once=True,
+        key="voice_recorder",
+    )
+    if audio_data and audio_data["bytes"]:
+        recognizer = sr.Recognizer()
+        audio_bytes = io.BytesIO(audio_data["bytes"])
+        with sr.AudioFile(audio_bytes) as source:
+            audio = recognizer.record(source)
+        try:
+            voice_text = recognizer.recognize_google(audio)
+            st.success(f"You said: {voice_text}")
+        except sr.UnknownValueError:
+            st.warning("Could not understand audio. Please try again.")
+        except sr.RequestError:
+            st.error("Speech recognition service is unavailable.")
+
 user_input = st.text_input(
-    "I’m ready — whenever you are",
+    "I'm ready — whenever you are",
     key="user_question",
     placeholder="Type your message…",
 )
 
-submit = bool(user_input)   # Enter press = auto-submit
+query = voice_text or user_input
+submit = bool(query)
 
-
-db=create_or_update_vectorstore()
-
-if submit and user_input:
-# retrieve
-    docs = db.similarity_search_with_score(user_input,k=4)
-
-    print(docs)
+if submit and query:
+    docs = db.similarity_search_with_score(query, k=4)
     context = "\n\n".join([d[0].page_content for d in docs])
-    query_with_context = f"{user_input}\n\nContext:\n{context}"
+    query_with_context = f"{query}\n\nContext:\n{context}"
     response = agent.invoke({"query": query_with_context})
-    st.session_state.history.append((user_input, response))
+    st.session_state.history.append((query, response))
+
+    if voice_mode:
+        tts = gTTS(text=str(response), lang="en")
+        audio_buf = io.BytesIO()
+        tts.write_to_fp(audio_buf)
+        audio_buf.seek(0)
+        st.audio(audio_buf, format="audio/mp3")
 
 
 

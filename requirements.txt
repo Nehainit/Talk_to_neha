@@ -6,6 +6,6 @@ streamlit
 selenium
 webdriver_manager
 chromadb
-
-
-
+SpeechRecognition
+gTTS
+streamlit-mic-recorder
