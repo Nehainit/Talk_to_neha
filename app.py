@@ -10,6 +10,11 @@ from streamlit_mic_recorder import mic_recorder
 
 load_dotenv()
 
+# Make HF token available from Streamlit secrets or env var
+hf_token = os.environ.get("HF_TOKEN") or st.secrets.get("HF_TOKEN", "")
+if hf_token:
+    os.environ["HF_TOKEN"] = hf_token
+    os.environ["HUGGINGFACEHUB_API_TOKEN"] = hf_token
 
 st.set_page_config(page_title="Interview Assistant")
 
@@ -122,7 +127,7 @@ if voice_mode:
     )
     if audio_data and audio_data["bytes"]:
         try:
-            hf_client = InferenceClient(token=os.getenv("HF_TOKEN"))
+            hf_client = InferenceClient(token=hf_token)
             voice_text = hf_client.automatic_speech_recognition(
                 audio=audio_data["bytes"],
                 model="openai/whisper-small",
@@ -149,7 +154,7 @@ if submit and query:
 
     if voice_mode:
         try:
-            hf_client = InferenceClient(token=os.getenv("HF_TOKEN"))
+            hf_client = InferenceClient(token=hf_token)
             tts_audio = hf_client.text_to_speech(
                 text=str(response),
                 model="facebook/mms-tts-eng",
