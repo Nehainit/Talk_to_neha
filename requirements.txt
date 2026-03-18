@@ -9,4 +9,6 @@ webdriver_manager
 chromadb
 SpeechRecognition
 gTTS
+pydub
+ffmpeg-python
 streamlit-mic-recorder

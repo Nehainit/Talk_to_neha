@@ -6,6 +6,7 @@ import os
 import io
 import speech_recognition as sr
 from gtts import gTTS
+from pydub import AudioSegment
 from streamlit_mic_recorder import mic_recorder
 
 
@@ -123,8 +124,13 @@ if voice_mode:
     )
     if audio_data and audio_data["bytes"]:
         recognizer = sr.Recognizer()
-        audio_bytes = io.BytesIO(audio_data["bytes"])
-        with sr.AudioFile(audio_bytes) as source:
+        # mic_recorder returns WebM; convert to WAV for SpeechRecognition
+        webm_buf = io.BytesIO(audio_data["bytes"])
+        audio_segment = AudioSegment.from_file(webm_buf, format="webm")
+        wav_buf = io.BytesIO()
+        audio_segment.export(wav_buf, format="wav")
+        wav_buf.seek(0)
+        with sr.AudioFile(wav_buf) as source:
             audio = recognizer.record(source)
         try:
             voice_text = recognizer.recognize_google(audio)
