@@ -7,8 +7,5 @@ streamlit
 selenium
 webdriver_manager
 chromadb
-SpeechRecognition
-gTTS
-pydub
-ffmpeg-python
+huggingface_hub
 streamlit-mic-recorder

@@ -4,9 +4,7 @@ from agent import build_agent
 from ingest import create_or_update_vectorstore
 import os
 import io
-import speech_recognition as sr
-from gtts import gTTS
-from pydub import AudioSegment
+from huggingface_hub import InferenceClient
 from streamlit_mic_recorder import mic_recorder
 
 
@@ -123,22 +121,15 @@ if voice_mode:
         key="voice_recorder",
     )
     if audio_data and audio_data["bytes"]:
-        recognizer = sr.Recognizer()
-        # mic_recorder returns WebM; convert to WAV for SpeechRecognition
-        webm_buf = io.BytesIO(audio_data["bytes"])
-        audio_segment = AudioSegment.from_file(webm_buf, format="webm")
-        wav_buf = io.BytesIO()
-        audio_segment.export(wav_buf, format="wav")
-        wav_buf.seek(0)
-        with sr.AudioFile(wav_buf) as source:
-            audio = recognizer.record(source)
         try:
-            voice_text = recognizer.recognize_google(audio)
+            hf_client = InferenceClient(token=os.getenv("HF_TOKEN"))
+            voice_text = hf_client.automatic_speech_recognition(
+                audio=audio_data["bytes"],
+                model="openai/whisper-small",
+            ).text
             st.success(f"You said: {voice_text}")
-        except sr.UnknownValueError:
-            st.warning("Could not understand audio. Please try again.")
-        except sr.RequestError:
-            st.error("Speech recognition service is unavailable.")
+        except Exception as e:
+            st.error(f"Speech recognition failed: {e}")
 
 user_input = st.text_input(
     "I'm ready — whenever you are",
@@ -157,11 +148,15 @@ if submit and query:
     st.session_state.history.append((query, response))
 
     if voice_mode:
-        tts = gTTS(text=str(response), lang="en")
-        audio_buf = io.BytesIO()
-        tts.write_to_fp(audio_buf)
-        audio_buf.seek(0)
-        st.audio(audio_buf, format="audio/mp3")
+        try:
+            hf_client = InferenceClient(token=os.getenv("HF_TOKEN"))
+            tts_audio = hf_client.text_to_speech(
+                text=str(response),
+                model="facebook/mms-tts-eng",
+            )
+            st.audio(tts_audio, format="audio/flac")
+        except Exception as e:
+            st.warning(f"Text-to-speech failed: {e}")
 
 
 
