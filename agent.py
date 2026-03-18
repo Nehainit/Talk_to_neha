@@ -1,5 +1,5 @@
 import os
-from langchain_openai import ChatOpenAI
+from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
@@ -130,7 +130,14 @@ Never say “information not found” for greetings or general questions.
 
 
 
-    llm = ChatOpenAI()
+    llm = ChatHuggingFace(
+        llm=HuggingFaceEndpoint(
+            repo_id="Qwen/Qwen2.5-72B-Instruct",
+            task="text-generation",
+            max_new_tokens=512,
+            temperature=0.7,
+        )
+    )
     agent_pipeline = prompt | llm | StrOutputParser()
 
     return agent_pipeline, retriever

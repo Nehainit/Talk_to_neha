@@ -1,6 +1,6 @@
 import os
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_openai import OpenAIEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
 from dotenv import load_dotenv
 from data_loader import load_markdown_files
@@ -17,7 +17,7 @@ CHROMA_DIR="./data/chroma_db"
 # print(text)
 
 def create_or_update_vectorstore(persist_directory: str = CHROMA_DIR, force_reingest: bool = False):
-    embeddings = OpenAIEmbeddings()
+    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
     # If DB already exists on disk, just load it
     if not force_reingest and os.path.exists(persist_directory) and os.listdir(persist_directory):
