@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neha Dubey | AI Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="https://github.com/Nehainit" target="_blank" class="header-link">GitHub</a>
+        <button class="copy-email" onclick="copyEmail()">
+            Copy my email
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+        </button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-image">
+            <img src="profile_photo.jpeg" alt="Neha Dubey" class="profile-photo">
+        </div>
+        <h1 class="hero-title">
+            I'm Neha, I build<br>
+            intelligent AI systems that<br>
+            solve real problems
+        </h1>
+        <div class="hero-cta">
+            <a href="mailto:nehadubey1021@gmail.com" class="btn btn-primary">
+                Let's talk
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/nehadubey11/" target="_blank" class="btn btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                Connect on LinkedIn
+            </a>
+        </div>
+
+        <!-- Company Logos -->
+        <div class="company-logos">
+            <div class="logo-item">
+                <span class="company-name">Cummins</span>
+            </div>
+            <div class="logo-item">
+                <span class="company-name">Infomo</span>
+            </div>
+            <div class="logo-item">
+                <span class="company-name">NIT Jalandhar</span>
+            </div>
+        </div>
+
+        <!-- Testimonial Card -->
+        <div class="testimonial-card">
+            <p class="testimonial-text">
+                "AI Engineer with 2+ years of experience building production-grade LLM applications, RAG systems, and intelligent automation pipelines."
+            </p>
+            <div class="testimonial-author">
+                <div class="author-avatar">ND</div>
+                <div class="author-info">
+                    <span class="author-name">Neha Dubey</span>
+                    <span class="author-title">AI Engineer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selected Work Section -->
+    <section class="selected-work">
+        <div class="section-divider">
+            <span>Selected Work</span>
+        </div>
+
+        <div class="work-toggle">
+            <button class="toggle-btn active" data-filter="all">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                All Projects
+            </button>
+            <button class="toggle-btn" data-filter="llm">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                LLM/RAG
+            </button>
+            <button class="toggle-btn" data-filter="data">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                </svg>
+                Data Engineering
+            </button>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Project 1: RAG Criminal Defense -->
+            <div class="project-card" data-category="llm" onclick="openModal('modal-rag')">
+                <div class="project-preview">
+                    <div class="project-screens rag-project">
+                        <div class="screen screen-1">
+                            <div class="screen-header">
+                                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                            </div>
+                            <div class="screen-content">
+                                <div class="code-line"><span class="keyword">from</span> langchain <span class="keyword">import</span> RAG</div>
+                                <div class="code-line"><span class="keyword">from</span> ollama <span class="keyword">import</span> LLM</div>
+                                <div class="code-line"></div>
+                                <div class="code-line"><span class="function">def</span> <span class="name">query_legal_docs</span>():</div>
+                                <div class="code-line">    <span class="comment"># Vector search</span></div>
+                            </div>
+                        </div>
+                        <div class="screen screen-2">
+                            <div class="chat-bubble">Analyze defense precedents for...</div>
+                            <div class="chat-response">Based on Illinois case law...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">RAG Criminal Defense Research</h3>
+                    <p class="project-desc">Private, locally-hosted RAG system for law firms</p>
+                    <div class="project-tags">
+                        <span class="tag">RAG</span>
+                        <span class="tag">LangChain</span>
+                        <span class="tag">Ollama</span>
+                        <span class="tag">Docker</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: AI-Powered ATS -->
+            <div class="project-card" data-category="llm" onclick="openModal('modal-ats')">
+                <div class="project-preview">
+                    <div class="project-screens ats-project">
+                        <div class="screen screen-1">
+                            <div class="ats-header">AI Resume Analyzer</div>
+                            <div class="ats-score">
+                                <span class="score-number">87%</span>
+                                <span class="score-label">Match Score</span>
+                            </div>
+                            <div class="ats-bar"></div>
+                        </div>
+                        <div class="screen screen-2">
+                            <div class="skill-match">
+                                <span class="skill-icon">+</span> Python
+                            </div>
+                            <div class="skill-match">
+                                <span class="skill-icon">+</span> LangChain
+                            </div>
+                            <div class="skill-missing">
+                                <span class="skill-icon">-</span> Kubernetes
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">AI-Powered ATS</h3>
+                    <p class="project-desc">Intelligent applicant tracking with AI agents</p>
+                    <div class="project-tags">
+                        <span class="tag">AI Agents</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">TypeScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: AI ETL Pipeline -->
+            <div class="project-card" data-category="data llm" onclick="openModal('modal-etl')">
+                <div class="project-preview">
+                    <div class="project-screens etl-project">
+                        <div class="screen screen-1">
+                            <div class="etl-flow">
+                                <div class="etl-node source">CSV</div>
+                                <div class="etl-arrow">→</div>
+                                <div class="etl-node ai">AI</div>
+                                <div class="etl-arrow">→</div>
+                                <div class="etl-node target">DB</div>
+                            </div>
+                            <div class="mapping-line">
+                                <span>customer_id</span>
+                                <span class="map-arrow">→</span>
+                                <span>cust_identifier</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">AI-Powered ETL Pipeline</h3>
+                    <p class="project-desc">LLM-driven automatic schema detection & mapping</p>
+                    <div class="project-tags">
+                        <span class="tag">LLM</span>
+                        <span class="tag">ETL</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">Claude</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Data Quality Monitor -->
+            <div class="project-card" data-category="data" onclick="openModal('modal-dqm')">
+                <div class="project-preview">
+                    <div class="project-screens dqm-project">
+                        <div class="screen screen-1">
+                            <div class="dqm-header">Data Quality Dashboard</div>
+                            <div class="dqm-metrics">
+                                <div class="metric good">
+                                    <span class="metric-value">99.2%</span>
+                                    <span class="metric-label">Completeness</span>
+                                </div>
+                                <div class="metric warning">
+                                    <span class="metric-value">94.1%</span>
+                                    <span class="metric-label">Accuracy</span>
+                                </div>
+                            </div>
+                            <div class="anomaly-alert">
+                                <span class="alert-icon">!</span>
+                                Anomaly detected in sales_data
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Real-Time Data Quality Monitor</h3>
+                    <p class="project-desc">AI-powered anomaly detection & root cause analysis</p>
+                    <div class="project-tags">
+                        <span class="tag">Kafka</span>
+                        <span class="tag">Streamlit</span>
+                        <span class="tag">Claude API</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: Bank Statement Extractor -->
+            <div class="project-card" data-category="llm" onclick="openModal('modal-bank')">
+                <div class="project-preview">
+                    <div class="project-screens bank-project">
+                        <div class="screen screen-1">
+                            <div class="pdf-icon">PDF</div>
+                            <div class="extract-arrow">→</div>
+                            <div class="json-preview">
+                                <span class="json-key">"transactions"</span>: [
+                                <div class="json-indent">{ "date": "2024-01-15",</div>
+                                <div class="json-indent">"amount": -2500 }</div>
+                                ]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Bank Statement Extractor</h3>
+                    <p class="project-desc">AI document extraction with Claude API</p>
+                    <div class="project-tags">
+                        <span class="tag">Claude API</span>
+                        <span class="tag">OCR</span>
+                        <span class="tag">Streamlit</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6: Automated Report Generator -->
+            <div class="project-card" data-category="llm data" onclick="openModal('modal-report')">
+                <div class="project-preview">
+                    <div class="project-screens report-project">
+                        <div class="screen screen-1">
+                            <div class="report-header">
+                                <span class="report-icon">+</span>
+                                Q4 Executive Report
+                            </div>
+                            <div class="report-insight">
+                                <span class="insight-icon">AI</span>
+                                Revenue increased 23% due to...
+                            </div>
+                            <div class="report-chart">
+                                <div class="bar bar-1"></div>
+                                <div class="bar bar-2"></div>
+                                <div class="bar bar-3"></div>
+                                <div class="bar bar-4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Automated Report Generator</h3>
+                    <p class="project-desc">LLM-powered business intelligence reports</p>
+                    <div class="project-tags">
+                        <span class="tag">LangChain</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">Multi-source</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 7: Cash Flow Intelligence (Langflow) -->
+            <div class="project-card" data-category="llm" onclick="openModal('modal-cashflow')">
+                <div class="project-preview langflow-preview">
+                    <div class="project-screens cashflow-project">
+                        <div class="langflow-nodes">
+                            <div class="lf-node input">Input</div>
+                            <div class="lf-connector"></div>
+                            <div class="lf-node llm">LLM</div>
+                            <div class="lf-connector"></div>
+                            <div class="lf-node output">Analysis</div>
+                        </div>
+                        <div class="cashflow-label">Cash Flow Intelligence</div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Cash Flow Intelligence</h3>
+                    <p class="project-desc">Financial analysis workflow built with Langflow</p>
+                    <div class="project-tags">
+                        <span class="tag">Langflow</span>
+                        <span class="tag">LLM</span>
+                        <span class="tag">Finance</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 8: Credit Risk Flow (Langflow) -->
+            <div class="project-card" data-category="llm" onclick="openModal('modal-credit')">
+                <div class="project-preview langflow-preview">
+                    <div class="project-screens credit-project">
+                        <div class="langflow-nodes">
+                            <div class="lf-node input">Data</div>
+                            <div class="lf-connector"></div>
+                            <div class="lf-node process">Risk Model</div>
+                            <div class="lf-connector"></div>
+                            <div class="lf-node output">Score</div>
+                        </div>
+                        <div class="risk-meter">
+                            <div class="risk-fill"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Credit Risk Assessment</h3>
+                    <p class="project-desc">AI-driven credit risk scoring workflow</p>
+                    <div class="project-tags">
+                        <span class="tag">Langflow</span>
+                        <span class="tag">Risk Analysis</span>
+                        <span class="tag">AI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Work With Me Section -->
+    <section class="why-section">
+        <div class="section-divider">
+            <span>Why work with me?</span>
+        </div>
+
+        <h2 class="why-title">I build, deploy, and ship<span class="italic">—fast.</span></h2>
+        <p class="why-subtitle">From data pipelines to LLM applications. End-to-end AI solutions.</p>
+
+        <div class="bento-grid">
+            <!-- Stats Card -->
+            <div class="bento-card stats-card">
+                <span class="big-number">8+</span>
+                <span class="stats-label">AI Projects Shipped</span>
+            </div>
+
+            <!-- Skills Card -->
+            <div class="bento-card skills-card">
+                <span class="skills-header">What I bring:</span>
+                <ul class="skills-list">
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                        LLM & RAG Systems
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                        </svg>
+                        Data Engineering
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                        Full-Stack AI Apps
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Animation Card -->
+            <div class="bento-card animation-card">
+                <p class="animation-text">I turn complex data into<br>intelligent solutions.</p>
+                <div class="data-flow">
+                    <span class="flow-text">Data</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-text">AI</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-text">Impact</span>
+                </div>
+            </div>
+
+            <!-- Experience Card -->
+            <div class="bento-card experience-card">
+                <div class="exp-company">
+                    <span class="company-icon">C</span>
+                    <span class="company-text">Cummins Inc.</span>
+                </div>
+                <p class="exp-quote">"Built robust Databricks workflows for big data processing, reducing data latency and improving pipeline reliability."</p>
+                <div class="exp-role">
+                    <span class="role-title">Associate Data Engineer</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Values -->
+        <div class="values-row">
+            <div class="value-item">
+                <span class="value-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </span>
+                <p class="value-text">I believe in <strong>production-ready</strong><br>AI systems</p>
+            </div>
+            <div class="value-item">
+                <span class="value-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                </span>
+                <p class="value-text">I believe in <strong>fast execution</strong><br>over perfection</p>
+            </div>
+            <div class="value-item">
+                <span class="value-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                        <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                        <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                    </svg>
+                </span>
+                <p class="value-text">I believe in <strong>learning whatever</strong><br>it takes to ship</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <p class="about-text">
+                I started as a Data Engineer, building real-time pipelines and analytics dashboards.
+                But I've always been fascinated by AI—now I'm combining both worlds: building intelligent
+                systems that not only process data but understand and act on it.
+            </p>
+            <p class="about-text">
+                AI gives you the chance to solve problems that seemed impossible before. That's why I build
+                RAG systems, LLM applications, and intelligent automation—turning unstructured chaos into
+                actionable insights.
+            </p>
+            <p class="tools-label">The tools that help me do this:</p>
+            <div class="tools-icons">
+                <span class="tool-icon" title="Python">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/>
+                    </svg>
+                </span>
+                <span class="tool-icon" title="LangChain">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </span>
+                <span class="tool-icon" title="Claude/OpenAI">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M12 2v4m0 12v4m10-10h-4M6 12H2m15.07-7.07l-2.83 2.83m-8.48 8.48l-2.83 2.83m0-14.14l2.83 2.83m8.48 8.48l2.83 2.83"/>
+                    </svg>
+                </span>
+                <span class="tool-icon" title="Docker">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M13 3v2h-2V3h2zm-4 0v2H7V3h2zm8 0v2h-2V3h2zM9 7v2H7V7h2zm4 0v2h-2V7h2zm4 0v2h-2V7h2zm4 2c0-1-.5-2-2-2v2H5V7c-1.5 0-2 1-2 2v9c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-9zm-4-2v2h-2V7h2z"/>
+                    </svg>
+                </span>
+            </div>
+            <p class="thoughts-text">Those are my thoughts—curious to hear yours.</p>
+            <p class="signature">Neha D.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="section-divider">
+            <span>Contact me</span>
+        </div>
+
+        <h2 class="contact-title">Find me in</h2>
+
+        <div class="contact-buttons">
+            <a href="mailto:nehadubey1021@gmail.com" class="contact-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                nehadubey1021@gmail.com
+            </a>
+            <a href="https://github.com/Nehainit" target="_blank" class="contact-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/nehadubey11/" target="_blank" class="contact-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                LinkedIn
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Thanks for visiting! Built with care.</p>
+    </footer>
+
+    <!-- Modals -->
+    <div id="modal-rag" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-rag')">&times;</button>
+            <h2>RAG Criminal Defense Research</h2>
+            <p class="modal-desc">A private, locally-hosted Retrieval-Augmented Generation system designed for criminal defense law firms in Illinois. All data stays on your local machine - no cloud services required.</p>
+            <div class="modal-tech">
+                <h4>Technologies</h4>
+                <div class="modal-tags">
+                    <span>Python</span><span>Docker</span><span>Ollama</span><span>FastAPI</span><span>Vector DB</span><span>OCR</span>
+                </div>
+            </div>
+            <div class="modal-features">
+                <h4>Key Features</h4>
+                <ul>
+                    <li>100% local processing - no cloud dependencies</li>
+                    <li>Document ingestion with OCR support</li>
+                    <li>Semantic search over legal documents</li>
+                    <li>GPU-accelerated inference (RTX 4090 recommended)</li>
+                </ul>
+            </div>
+            <a href="https://github.com/Nehainit/RAG_criminal-defense-research" target="_blank" class="modal-link">View on GitHub →</a>
+        </div>
+    </div>
+
+    <div id="modal-ats" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-ats')">&times;</button>
+            <h2>AI-Powered ATS</h2>
+            <p class="modal-desc">An intelligent applicant tracking system with AI agents for resume analysis, candidate matching, and automated screening.</p>
+            <div class="modal-tech">
+                <h4>Technologies</h4>
+                <div class="modal-tags">
+                    <span>Python</span><span>TypeScript</span><span>Streamlit</span><span>AI Agents</span>
+                </div>
+            </div>
+            <div class="modal-features">
+                <h4>Key Features</h4>
+                <ul>
+                    <li>AI-powered resume parsing and analysis</li>
+                    <li>Intelligent candidate-job matching</li>
+                    <li>Multi-agent architecture for complex workflows</li>
+                    <li>Full-stack application with modern UI</li>
+                </ul>
+            </div>
+            <a href="https://github.com/Nehainit/AI-powered-ATS" target="_blank" class="modal-link">View on GitHub →</a>
+        </div>
+    </div>
+
+    <div id="modal-etl" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-etl')">&times;</button>
+            <h2>AI-Powered ETL Pipeline</h2>
+            <p class="modal-desc">An intelligent system leveraging LLMs to automatically identify data schemas, establish column mappings between different sources, and produce transformation rules.</p>
+            <div class="modal-tech">
+                <h4>Technologies</h4>
+                <div class="modal-tags">
+                    <span>Python 3.11+</span><span>Claude/GPT-4</span><span>FastAPI</span><span>Streamlit</span><span>Pandas</span><span>SQLAlchemy</span>
+                </div>
+            </div>
+            <div class="modal-features">
+                <h4>Key Features</h4>
+                <ul>
+                    <li>Automatic schema detection using LLMs</li>
+                    <li>Intelligent column mapping suggestions</li>
+                    <li>AI-suggested data transformations</li>
+                    <li>Support for CSV, JSON, Excel, and databases</li>
+                </ul>
+            </div>
+            <a href="https://github.com/Nehainit/AI-ETL-PIPELINE" target="_blank" class="modal-link">View on GitHub →</a>
+        </div>
+    </div>
+
+    <div id="modal-dqm" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-dqm')">&times;</button>
+            <h2>Real-Time Data Quality Monitor</h2>
+            <p class="modal-desc">A comprehensive system for monitoring data quality in real-time that identifies anomalies, leverages AI to explain issues, and distributes alerts via multiple channels.</p>
+            <div class="modal-tech">
+                <h4>Technologies</h4>
+                <div class="modal-tags">
+                    <span>Python</span><span>Kafka</span><span>Redis</span><span>Streamlit</span><span>Plotly</span><span>Claude/GPT-4</span>
+                </div>
+            </div>
+            <div class="modal-features">
+                <h4>Key Features</h4>
+                <ul>
+                    <li>7 types of quality checks (null, duplicate, type, range, pattern, freshness, volume)</li>
+                    <li>Statistical anomaly detection (Z-score, distribution analysis)</li>
+                    <li>AI-powered root cause analysis in plain English</li>
+                    <li>Multi-channel alerts (Slack, Email)</li>
+                </ul>
+            </div>
+            <a href="https://github.com/Nehainit/data-quality-monitor" target="_blank" class="modal-link">View on GitHub →</a>
+        </div>
+    </div>
+
+    <div id="modal-bank" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-bank')">&times;</button>
+            <h2>Bank Statement Extractor</h2>
+            <p class="modal-desc">An AI-powered document extraction system using Claude API to parse unstructured bank statements into structured JSON data with transaction details, account info, and summaries.</p>
+            <div class="modal-tech">
+                <h4>Technologies</h4>
+                <div class="modal-tags">
+                    <span>Python</span><span>Claude API</span><span>Streamlit</span><span>Tesseract OCR</span><span>Poppler</span>
+                </div>
+            </div>
+            <div class="modal-features">
+                <h4>Key Features</h4>
+                <ul>
+                    <li>PDF to structured JSON extraction</li>
+                    <li>Intelligent field mapping for multiple bank formats</li>
+                    <li>Transaction categorization and summarization</li>
+                    <li>Export to CSV for further analysis</li>
+                </ul>
+            </div>
+            <a href="https://github.com/Nehainit/bank-statment-extractor" target="_blank" class="modal-link">View on GitHub →</a>
+        </div>
+    </div>
+
+    <div id="modal-report" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-report')">&times;</button>
+            <h2>Automated Report Generator</h2>
+            <p class="modal-desc">An AI-powered system that automatically generates professional business reports from multiple data sources with AI-generated insights.</p>
+            <div class="modal-tech">
+                <h4>Technologies</h4>
+                <div class="modal-tags">
+                    <span>Python 3.11+</span><span>FastAPI</span><span>LangChain</span><span>Streamlit</span><span>Plotly</span><span>Docker</span>
+                </div>
+            </div>
+            <div class="modal-features">
+                <h4>Key Features</h4>
+                <ul>
+                    <li>Connect to PostgreSQL, MySQL, SQLite, CSV, Google Sheets, REST APIs</li>
+                    <li>AI-generated insights and recommendations</li>
+                    <li>PDF, HTML, Markdown output formats</li>
+                    <li>Automated Slack/Email delivery</li>
+                </ul>
+            </div>
+            <a href="https://github.com/Nehainit/automated-report-generator" target="_blank" class="modal-link">View on GitHub →</a>
+        </div>
+    </div>
+
+    <div id="modal-cashflow" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-cashflow')">&times;</button>
+            <h2>Cash Flow Intelligence</h2>
+            <p class="modal-desc">A financial analysis workflow built with Langflow for intelligent cash flow statement analysis and insights generation.</p>
+            <div class="modal-tech">
+                <h4>Technologies</h4>
+                <div class="modal-tags">
+                    <span>Langflow</span><span>LLM</span><span>Financial Analysis</span>
+                </div>
+            </div>
+            <div class="modal-features">
+                <h4>Key Features</h4>
+                <ul>
+                    <li>Visual workflow builder with Langflow</li>
+                    <li>Automated cash flow analysis</li>
+                    <li>AI-powered financial insights</li>
+                    <li>Easy to customize and extend</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-credit" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-credit')">&times;</button>
+            <h2>Credit Risk Assessment</h2>
+            <p class="modal-desc">An AI-driven credit risk scoring workflow built with Langflow for automated risk analysis and decision support.</p>
+            <div class="modal-tech">
+                <h4>Technologies</h4>
+                <div class="modal-tags">
+                    <span>Langflow</span><span>Risk Modeling</span><span>LLM</span>
+                </div>
+            </div>
+            <div class="modal-features">
+                <h4>Key Features</h4>
+                <ul>
+                    <li>Visual risk assessment pipeline</li>
+                    <li>AI-powered risk scoring</li>
+                    <li>Configurable risk parameters</li>
+                    <li>Decision support recommendations</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
